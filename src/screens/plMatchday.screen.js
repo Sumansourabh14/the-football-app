@@ -1,87 +1,87 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import matchdayObject from "../content/plMatchday.json";
 import { fontSizes } from "../styles/fonts/fonts";
 
 const PlMatchday = () => {
   return (
-    <View style={{ paddingTop: 20 }}>
-      <View style={styles.flexContainer}>
-        <Image
-          source={{ uri: matchdayObject.competition.emblem }}
-          style={styles.emblem}
-        />
-        <View style={{ marginLeft: 16 }}>
-          <View style={styles.flexContainer}>
-            <Text
-              style={{
-                marginRight: 4,
-                fontWeight: "bold",
-                fontSize: fontSizes.s4,
-              }}
-            >
-              {matchdayObject.competition.name}
-            </Text>
-            {/* <Text>
-              {matchdayObject.filters.season}/
-              {parseInt(matchdayObject.filters.season) + 1}
-            </Text> */}
+    <ScrollView>
+      <View
+        style={{
+          paddingTop: 20,
+        }}
+      >
+        <View style={styles.flexContainer}>
+          <Image
+            source={{ uri: matchdayObject.competition.emblem }}
+            style={styles.emblem}
+          />
+          <View style={{ marginLeft: 16 }}>
+            <View style={styles.flexContainer}>
+              <Text
+                style={{
+                  marginRight: 4,
+                  fontWeight: "bold",
+                  fontSize: fontSizes.s4,
+                }}
+              >
+                {matchdayObject.competition.name}
+              </Text>
+              {/* <Text>
+                  {matchdayObject.filters.season}/
+                  {parseInt(matchdayObject.filters.season) + 1}
+                </Text> */}
+            </View>
+            <Text>Matchday {matchdayObject.filters.matchday}</Text>
           </View>
-          <Text>Matchday {matchdayObject.filters.matchday}</Text>
+        </View>
+        <View
+          style={{
+            marginTop: 20,
+          }}
+        >
+          {matchdayObject.matches
+            ? matchdayObject.matches.map((match) => (
+                <View
+                  key={match.id}
+                  style={[styles.individualMatch, styles.individualMatchShadow]}
+                >
+                  <View style={styles.scoreSheet}>
+                    <View style={styles.homeClubStyles}>
+                      <Text style={styles.clubName}>
+                        {match.homeTeam.shortName}
+                      </Text>
+                      <Image
+                        source={{ uri: match.homeTeam.crest }}
+                        style={styles.crest}
+                      />
+                    </View>
+                    <View style={styles.finalScoreContainer}>
+                      <Text style={styles.finalScore}>
+                        {match.score.fullTime.home}
+                      </Text>
+                      <Text style={styles.finalScore}> : </Text>
+                      <Text style={styles.finalScore}>
+                        {match.score.fullTime.away}
+                      </Text>
+                    </View>
+                    <View style={styles.awayClubStyles}>
+                      <Image
+                        source={{ uri: match.awayTeam.crest }}
+                        style={styles.crest}
+                      />
+                      <Text style={styles.clubName}>
+                        {match.awayTeam.shortName}
+                      </Text>
+                    </View>
+                  </View>
+                  <View>{match.score.winner ? <Text>FT</Text> : ""}</View>
+                </View>
+              ))
+            : ""}
         </View>
       </View>
-
-      <View style={{ marginVertical: 20 }}>
-        {matchdayObject.matches
-          ? matchdayObject.matches.map((match) => (
-              <View key={match.id} style={styles.individualMatch}>
-                <View style={styles.scoreSheet}>
-                  <View style={styles.homeClubStyles}>
-                    <Text style={styles.clubName}>
-                      {match.homeTeam.shortName}
-                    </Text>
-                    <Image
-                      source={{ uri: match.homeTeam.crest }}
-                      style={styles.crest}
-                    />
-                  </View>
-                  <View style={styles.finalScoreContainer}>
-                    <Text style={styles.finalScore}>
-                      {match.score.fullTime.home}
-                    </Text>
-                    <Text style={styles.finalScore}> : </Text>
-                    <Text style={styles.finalScore}>
-                      {match.score.fullTime.away}
-                    </Text>
-                  </View>
-                  <View style={styles.awayClubStyles}>
-                    <Image
-                      source={{ uri: match.awayTeam.crest }}
-                      style={styles.crest}
-                    />
-                    <Text style={styles.clubName}>
-                      {match.awayTeam.shortName}
-                    </Text>
-                  </View>
-                </View>
-
-                <View>{match.score.winner ? <Text>FT</Text> : ""}</View>
-              </View>
-            ))
-          : ""}
-      </View>
-
-      {/* <View>
-        {matchdayObject.matches
-          ? matchdayObject.matches.map((match) => (
-              <View style={styles.individualMatch}>
-                <Text>{match.homeTeam.name}</Text>
-                <Text>{match.awayTeam.name}</Text>
-              </View>
-            ))
-          : ""}
-      </View> */}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 6,
   },
   individualMatch: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FEFBF6",
     borderRadius: 8,
     marginBottom: 10,
     flexDirection: "row",
@@ -124,6 +124,11 @@ const styles = StyleSheet.create({
     width: 370,
     paddingVertical: 10,
     paddingHorizontal: 10,
+  },
+  individualMatchShadow: {
+    elevation: 2,
+    shadowColor: "#000",
+    marginHorizontal: 2,
   },
   scoreSheet: {
     flexDirection: "row",
