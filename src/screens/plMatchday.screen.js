@@ -36,7 +36,7 @@ const PlMatchday = () => {
           ? matchdayObject.matches.map((match) => (
               <View key={match.id} style={styles.individualMatch}>
                 <View style={styles.scoreSheet}>
-                  <View style={styles.flexContainer}>
+                  <View style={styles.homeClubStyles}>
                     <Text style={styles.clubName}>
                       {match.homeTeam.shortName}
                     </Text>
@@ -44,15 +44,17 @@ const PlMatchday = () => {
                       source={{ uri: match.homeTeam.crest }}
                       style={styles.crest}
                     />
+                  </View>
+                  <View style={styles.finalScoreContainer}>
                     <Text style={styles.finalScore}>
                       {match.score.fullTime.home}
                     </Text>
-                  </View>
-                  <Text style={styles.finalScore}> : </Text>
-                  <View style={styles.flexContainer}>
+                    <Text style={styles.finalScore}> : </Text>
                     <Text style={styles.finalScore}>
                       {match.score.fullTime.away}
                     </Text>
+                  </View>
+                  <View style={styles.awayClubStyles}>
                     <Image
                       source={{ uri: match.awayTeam.crest }}
                       style={styles.crest}
@@ -91,6 +93,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  homeClubStyles: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flex: 1,
+  },
+  awayClubStyles: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flex: 1,
+  },
   emblem: {
     height: 40,
     width: 80,
@@ -98,7 +112,7 @@ const styles = StyleSheet.create({
   crest: {
     height: 30,
     width: 30,
-    marginHorizontal: 4,
+    marginHorizontal: 6,
   },
   individualMatch: {
     backgroundColor: "#fff",
@@ -127,5 +141,11 @@ const styles = StyleSheet.create({
   finalScore: {
     fontSize: fontSizes.s3,
     fontWeight: "bold",
+  },
+  finalScoreContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 6,
   },
 });
