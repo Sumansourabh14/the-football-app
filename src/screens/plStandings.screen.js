@@ -15,7 +15,7 @@ const PlStandings = () => {
       <Text style={styles.leagueTitle}>{tableData.competition.name}</Text>
       <Text style={styles.leagueCountry}>{tableData.area.name}</Text>
 
-      <View style={[styles.standings]}>
+      <View style={[styles.standings, { marginTop: 20 }]}>
         {tableData.standings[0].type === "TOTAL" ? (
           tableData.standings[0].table.map((team) => (
             <View
