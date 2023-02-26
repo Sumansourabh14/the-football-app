@@ -1,7 +1,7 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import matchdayObject from "../content/plMatchday.json";
-import { fontSizes } from "../styles/fonts/fonts";
+import { fontSizes } from "../styles/fonts";
 import { SvgUri } from "react-native-svg";
 
 const PlMatchday = () => {
