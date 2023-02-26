@@ -2,6 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import matchdayObject from "../content/plMatchday.json";
 import { fontSizes } from "../styles/fonts/fonts";
+import { SvgUri } from "react-native-svg";
 
 const PlMatchday = () => {
   return (
@@ -51,10 +52,20 @@ const PlMatchday = () => {
                       <Text style={styles.clubName}>
                         {match.homeTeam.shortName}
                       </Text>
-                      <Image
-                        source={{ uri: match.homeTeam.crest }}
-                        style={styles.crest}
-                      />
+                      {match.homeTeam.crest.includes(".svg") ? (
+                        <SvgUri
+                          uri={match.homeTeam.crest}
+                          width={30}
+                          height={30}
+                          style={{ marginHorizontal: 6 }}
+                        />
+                      ) : (
+                        <Image
+                          source={{ uri: match.homeTeam.crest }}
+                          style={styles.crest}
+                          alt={match.homeTeam.name}
+                        />
+                      )}
                     </View>
                     <View style={styles.finalScoreContainer}>
                       <Text style={styles.finalScore}>
@@ -66,10 +77,20 @@ const PlMatchday = () => {
                       </Text>
                     </View>
                     <View style={styles.awayClubStyles}>
-                      <Image
-                        source={{ uri: match.awayTeam.crest }}
-                        style={styles.crest}
-                      />
+                      {match.awayTeam.crest.includes(".svg") ? (
+                        <SvgUri
+                          uri={match.awayTeam.crest}
+                          width={30}
+                          height={30}
+                          style={{ marginHorizontal: 6 }}
+                        />
+                      ) : (
+                        <Image
+                          source={{ uri: match.awayTeam.crest }}
+                          style={styles.crest}
+                          alt={match.awayTeam.name}
+                        />
+                      )}
                       <Text style={styles.clubName}>
                         {match.awayTeam.shortName}
                       </Text>
