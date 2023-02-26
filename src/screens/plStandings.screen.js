@@ -8,7 +8,7 @@ const PlStandings = () => {
   return (
     <View
       style={{
-        paddingTop: 600,
+        paddingTop: 300,
       }}
     >
       <Image
@@ -21,9 +21,8 @@ const PlStandings = () => {
       <View>
         {tableData.standings[0].type === "TOTAL" ? (
           tableData.standings[0].table.map((team) => (
-            <View>
+            <View style={[styles.clubPositionLayout, styles.clubSpacing]}>
               <Text>{team.position}</Text>
-              <Text>{team.team.name}</Text>
               {team.team.crest.includes(".svg") ? (
                 <SvgUri
                   uri={team.team.crest}
@@ -38,6 +37,12 @@ const PlStandings = () => {
                   alt={team.team.name}
                 />
               )}
+              <Text>{team.team.shortName}</Text>
+              <Text>{team.playedGames}</Text>
+              <Text>{team.won}</Text>
+              <Text>{team.draw}</Text>
+              <Text>{team.lost}</Text>
+              <Text>{team.points}</Text>
             </View>
           ))
         ) : (
@@ -51,6 +56,13 @@ const PlStandings = () => {
 export default PlStandings;
 
 const styles = StyleSheet.create({
+  clubPositionLayout: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  clubSpacing: {
+    marginBottom: 20,
+  },
   leagueTitle: {
     fontSize: fontSizes.s4,
     fontWeight: "700",
