@@ -2,15 +2,17 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import PlMatchday from "./src/screens/plMatchday.screen";
 import PlStandings from "./src/screens/plStandings.screen";
+import MainContainer from "./src/navigation/MainContainer";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Text style={{ fontSize: 24 }}>The Football App!</Text> */}
-      <StatusBar style="auto" />
-      {/* <PlMatchday /> */}
-      <PlStandings />
-    </View>
+    // <View style={styles.container}>
+    //   {/* <Text style={{ fontSize: 24 }}>The Football App!</Text> */}
+    //   <StatusBar style="auto" />
+    //   {/* <PlMatchday /> */}
+    //   <PlStandings />
+    // </View>
+    <MainContainer />
   );
 }
 

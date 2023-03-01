@@ -4,7 +4,7 @@ import matchdayObject from "../content/plMatchday.json";
 import { fontSizes } from "../styles/fonts";
 import { SvgUri } from "react-native-svg";
 
-const PlMatchday = () => {
+const PlMatchday = ({ navigation }) => {
   return (
     <ScrollView>
       <View
