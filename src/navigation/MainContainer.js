@@ -12,7 +12,7 @@ import Home from "../screens/Home.screen";
 import Profile from "../screens/Profile.screen";
 import PlMatchday from "../screens/plMatchday.screen";
 
-// Screen names - placed on top of the screen
+// Screen names - placed on top of the screen and as the label
 const screenNames = {
   homeScreen: "Home",
   profileScreen: "Profile",
