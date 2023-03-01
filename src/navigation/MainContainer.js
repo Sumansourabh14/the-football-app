@@ -22,6 +22,15 @@ const screenNames = {
 const Tab = createBottomTabNavigator();
 
 const screenOptionsFunction = ({ route }) => ({
+  tabBarActiveTintColor: "#000",
+  tabBarLabelStyle: {
+    fontSize: 10,
+    paddingBottom: 10,
+  },
+  tabBarStyle: {
+    padding: 10,
+    height: 70,
+  },
   tabBarIcon: ({ focused, color, size }) => {
     let iconName;
     let rn = route.name;
@@ -29,9 +38,9 @@ const screenOptionsFunction = ({ route }) => ({
     if (rn === screenNames.homeScreen) {
       iconName = focused ? "home" : "home-outline";
     } else if (rn === screenNames.profileScreen) {
-      iconName = focused ? "settings" : "settings-outline";
+      iconName = focused ? "person" : "person-outline";
     } else if (rn === screenNames.plMatchday) {
-      iconName = focused ? "home" : "home-outline";
+      iconName = focused ? "calendar" : "calendar-outline";
     }
 
     return <Ionicons name={iconName} size={size} color={color} />;
