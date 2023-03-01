@@ -9,7 +9,8 @@ const PlMatchday = ({ navigation }) => {
     <ScrollView>
       <View
         style={{
-          paddingTop: 20,
+          paddingTop: 10,
+          alignItems: "center",
         }}
       >
         <View style={styles.flexContainer}>
